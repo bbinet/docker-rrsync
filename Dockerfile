@@ -5,7 +5,7 @@ MAINTAINER Bruno Binet <bruno.binet@helioslite.com>
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends openssh-server rsync perl
 
-RUN adduser --system --no-create-home rrsync
+RUN adduser --system --no-create-home rrsync --uid 500
 
 ADD sshd_config /config/sshd_config
 RUN chmod 700 /config
