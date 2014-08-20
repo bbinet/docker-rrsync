@@ -29,7 +29,7 @@ StrictModes yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes
-AuthorizedKeysFile	/config/authorized_keys
+AuthorizedKeysFile /config/authorized_keys
 
 ForceCommand /rrsync /data
 
