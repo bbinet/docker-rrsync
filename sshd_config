@@ -31,6 +31,8 @@ RSAAuthentication yes
 PubkeyAuthentication yes
 AuthorizedKeysFile	/config/authorized_keys
 
+ForceCommand /rrsync /data
+
 # Don't read the user's ~/.rhosts and ~/.shosts files
 IgnoreRhosts yes
 # For this to work you will also need host keys in /etc/ssh_known_hosts
