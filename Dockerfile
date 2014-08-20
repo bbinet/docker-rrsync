@@ -18,4 +18,4 @@ RUN mkdir /var/run/sshd
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-f", "/config/sshd_config", "-D"]
