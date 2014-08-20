@@ -8,7 +8,6 @@ RUN apt-get update && \
 RUN adduser --system --no-create-home rrsync --uid 500
 
 ADD sshd_config /config/sshd_config
-RUN chmod 700 /config
 ADD rrsync /rrsync
 RUN chmod +x /rrsync
 
