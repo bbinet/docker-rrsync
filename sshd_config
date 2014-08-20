@@ -24,7 +24,7 @@ LogLevel INFO
 
 # Authentication:
 LoginGraceTime 120
-PermitRootLogin yes
+PermitRootLogin no
 StrictModes yes
 
 RSAAuthentication yes
@@ -48,7 +48,9 @@ PermitEmptyPasswords no
 ChallengeResponseAuthentication no
 
 # Change to no to disable tunnelled clear text passwords
-#PasswordAuthentication yes
+PasswordAuthentication no
+
+AllowUsers rrsync
 
 # Kerberos options
 #KerberosAuthentication no
@@ -60,7 +62,9 @@ ChallengeResponseAuthentication no
 #GSSAPIAuthentication no
 #GSSAPICleanupCredentials yes
 
-X11Forwarding yes
+AllowTcpForwarding no
+
+X11Forwarding no
 X11DisplayOffset 10
 PrintMotd no
 PrintLastLog yes
@@ -73,7 +77,7 @@ TCPKeepAlive yes
 # Allow client to pass locale environment variables
 AcceptEnv LANG LC_*
 
-Subsystem sftp /usr/lib/openssh/sftp-server
+#Subsystem sftp /usr/lib/openssh/sftp-server
 
 # Set this to 'yes' to enable PAM authentication, account processing,
 # and session processing. If this is enabled, PAM authentication will
@@ -84,4 +88,4 @@ Subsystem sftp /usr/lib/openssh/sftp-server
 # If you just want the PAM account and session checks to run without
 # PAM authentication, then enable this but set PasswordAuthentication
 # and ChallengeResponseAuthentication to 'no'.
-UsePAM yes
+UsePAM no
