@@ -7,13 +7,13 @@ RUN apt-get update && \
 
 RUN adduser --system --no-create-home rrsync --uid 500
 
+RUN mkdir /var/run/sshd
 ADD sshd_config /config/sshd_config
 ADD rrsync /rrsync
 RUN chmod +x /rrsync
 
 VOLUME ["/data"]
 
-RUN mkdir /var/run/sshd
 
 EXPOSE 22
 
