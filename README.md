@@ -22,8 +22,11 @@ Run
 
 Then, when starting your rrsync container, you will want to bind ports `22`
 from the rrsync container to a host external port.
+
 The rrsync container will write uploaded data to a volume in `/data`, so you
-may want to bind this data volume to a host directory or a data container.
+may want to bind this data volume to a host directory or a data container,
+which should be writable for user uid 500.
+
 You also need to provide a read-only `authorized_keys` file that will be use to
 allow some users to rsync data based on their public ssh key.
 
