@@ -9,8 +9,8 @@ RUN adduser --system --shell /bin/sh --no-create-home rrsync --uid 500
 
 RUN mkdir /var/run/sshd
 ADD sshd_config /config/sshd_config
-ADD rrsync /rrsync
-RUN chmod +x /rrsync
+ADD rrsync rrsync.sh /
+RUN chmod +x /rrsync /rrsync.sh
 
 VOLUME ["/data"]
 

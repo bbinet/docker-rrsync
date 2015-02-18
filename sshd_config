@@ -31,7 +31,7 @@ RSAAuthentication yes
 PubkeyAuthentication yes
 AuthorizedKeysFile /config/authorized_keys
 
-ForceCommand /rrsync /data
+ForceCommand /rrsync.sh
 
 # Don't read the user's ~/.rhosts and ~/.shosts files
 IgnoreRhosts yes
