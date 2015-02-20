@@ -12,9 +12,6 @@ ADD sshd_config /config/sshd_config
 ADD rrsync rrsync.sh /
 RUN chmod +x /rrsync /rrsync.sh
 
-VOLUME ["/data"]
-
-
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-f", "/config/sshd_config", "-D"]
