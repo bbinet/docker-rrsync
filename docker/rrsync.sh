@@ -5,7 +5,7 @@
 # SSH_ORIGINAL_COMMAND should look like:
 # rsync --server -rze.iLsf --append --append . <path>
 
-RRSYNC="/rrsync"
+RRSYNC="/rrsync/rrsync"
 BASEPATH="/data"
 
 # Here we should validate the SSH_ORIGINAL_COMMAND is allowed

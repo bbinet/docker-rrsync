@@ -1,17 +1,21 @@
-FROM debian:wheezy
+FROM debian:stretch
 
 MAINTAINER Bruno Binet <bruno.binet@helioslite.com>
 
 RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends openssh-server rsync perl
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends openssh-server rsync perl dumb-init
 
-RUN adduser --system --shell /bin/sh --no-create-home rrsync --uid 500
+RUN adduser --system --shell /bin/sh rrsync --uid 1000
 
 RUN mkdir /var/run/sshd
-ADD sshd_config /config/sshd_config
-ADD rrsync rrsync.sh /
-RUN chmod +x /rrsync /rrsync.sh
+ADD docker /rrsync
+RUN chmod +x /rrsync/rrsync /rrsync/rrsync.sh
 
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-f", "/config/sshd_config", "-D"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+ENV HOST_KEY /etc/ssh/ssh_host_rsa_key
+ENV AUTHORIZED_KEYS_FILE /etc/ssh/authorized_keys
+
+CMD ["bash", "-c", "/usr/sbin/sshd -f /rrsync/sshd_config -h $HOST_KEY -o AuthorizedKeysFile=$AUTHORIZED_KEYS_FILE -D"]
