@@ -7,9 +7,10 @@ RUN apt-get update && \
 
 RUN adduser --system --shell /bin/sh rrsync --uid 1000
 
-RUN mkdir /var/run/sshd
 ADD docker /rrsync
 RUN chmod +x /rrsync/rrsync /rrsync/rrsync.sh
+RUN mkdir /var/run/sshd /data
+RUN chown rrsync: /data
 
 EXPOSE 22
 
