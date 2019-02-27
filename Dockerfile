@@ -9,8 +9,8 @@ RUN adduser --system --shell /bin/sh rrsync --uid 1000
 
 ADD docker /rrsync
 RUN chmod +x /rrsync/rrsync /rrsync/rrsync.sh
-RUN mkdir /var/run/sshd /data
-RUN chown rrsync: /data
+RUN mkdir /var/run/sshd
+RUN mkdir -p /data/trlogs /data/tmpdata /data/fitterms && chown -R rrsync:root /data
 
 EXPOSE 22
 
